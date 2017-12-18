@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Random;
 
 
 public class PeerServer {
@@ -110,7 +111,23 @@ public class PeerServer {
 			break;
 
 		case "join":
+			Random randomGenerator;
+    		ArrayList<String> catalogue;
+
+        	catalogue = new ArrayList<String>();
+        	randomGenerator = new Random();
+
+        	catalogue.add("google.com");
+        	catalogue.add("facebook.com");
+        	catalogue.add("github.com");
+        	catalogue.add("stackoverflow.com");
+        	catalogue.add("ciencias.ulisboa.pt");
+    
+        	int index = randomGenerator.nextInt(catalogue.size());
+        	fileName = catalogue.get(index);
+        
 			join(cmd);
+			insertFile("insert", fileName);
 			Utils.nodeActive = true;
 			break;
 
