@@ -235,7 +235,7 @@ public class PeerServer {
 			System.out.println("----------SEARCH STATUS----------");
 			System.out.println("Search Trail Path : "+node.getNodeIdentifier());
 			System.out.println("Insert DNS Result : Success");
-			System.out.println("Domain IP: " + content)
+			System.out.println("Domain IP: " + content);
 			System.out.println("--------------------------------");
 		}
 		else {
