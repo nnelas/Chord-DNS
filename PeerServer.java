@@ -229,9 +229,13 @@ public class PeerServer {
 		if(Utils.checkifNodeorFileIdentifierWithinLimit(fileIdentifier, node.getIdSpaceLowerLimit(), 
 				node.getIdSpaceUpperLimit())) {
 
+			String content;
+			content = new Scanner(new File(fileName)).useDelimiter("\\A").next();
+
 			System.out.println("----------SEARCH STATUS----------");
 			System.out.println("Search Trail Path : "+node.getNodeIdentifier());
 			System.out.println("Insert DNS Result : Success");
+			System.out.println("Domain IP: " + content)
 			System.out.println("--------------------------------");
 		}
 		else {
