@@ -54,7 +54,7 @@ public class PeerServer {
 		String command = null;
 
 		while(scan.hasNext()){
-			System.out.println("Enter command [join, leave, view, insert fileName, search fileName] :");
+			System.out.println("Enter command [join, leave, view, insert DNS, search DNS] :");
 			command = scan.nextLine();
 
 			String[] commands = command.split("\\s");
@@ -85,8 +85,8 @@ public class PeerServer {
 				File f = new File(fileName);
 
 				if(!f.exists()){
-					System.out.println("No such file in the directory ");
-					System.out.println("File Insert : Failure");
+					System.out.println("No such Dns in the directory ");
+					System.out.println("DNS Insert : Failure");
 					System.out.println("------------------------");
 					break;
 				}
@@ -231,7 +231,7 @@ public class PeerServer {
 
 			System.out.println("----------SEARCH STATUS----------");
 			System.out.println("Search Trail Path : "+node.getNodeIdentifier());
-			System.out.println("Insert File Result : Success");
+			System.out.println("Insert DNS Result : Success");
 			System.out.println("--------------------------------");
 		}
 		else {
@@ -309,7 +309,7 @@ public class PeerServer {
 		String content;
 		myFile.setFileName(fileName);
 
-		System.out.println("Requesting Server to insert file into Chord servers with file identifier : "+fileIdentifier);
+		System.out.println("Requesting Server to insert DNS into Chord servers with file identifier : "+fileIdentifier);
 		//check local id space.
 		if(Utils.checkifNodeorFileIdentifierWithinLimit(fileIdentifier, node.getIdSpaceLowerLimit(), 
 				node.getIdSpaceUpperLimit())) {
@@ -327,7 +327,7 @@ public class PeerServer {
 			}
 
 			File file = new File(Utils.SERVER_DEST, fileName);
-			System.out.println("New File : "+fileName+ " added to directory : "+
+			System.out.println("New DNS : "+fileName+ " added to directory : "+
 					Utils.SERVER_DEST);
 
 			//reading the file.
@@ -371,7 +371,7 @@ public class PeerServer {
 			myFile.setLines(lines);
 			node.getFiles().add(myFile);
 			System.out.println("Insert Trail Path : "+node.getNodeIdentifier());
-			System.out.println("Insert File Result : Success");
+			System.out.println("Insert DNS Result : Success");
 		} 
 
 		else {
@@ -441,8 +441,8 @@ public class PeerServer {
 
 			System.out.println("Search Result: "+fileReponseObj.result);
 		}else{
-			System.out.println("Search file : "+fileReponseObj.getFile().getFileName());
-			System.out.println("Reason : No such file present in the Chord servers " );
+			System.out.println("Search DNS : "+fileReponseObj.getFile().getFileName());
+			System.out.println("Reason : No such domain present in the Chord servers " );
 			System.out.println("Search Result: "+fileReponseObj.result);
 		}
 		System.out.println("--------------------------------");
@@ -454,12 +454,12 @@ public class PeerServer {
 	public void printFileInsertInfo(FileResponseObject fileReponseObj) {
 
 		System.out.println("---------INSERT STATUS-----------");
-		System.out.println("File : "+fileReponseObj.getFile().getFileName()+ " inserted");
+		System.out.println("Domain : "+fileReponseObj.getFile().getFileName()+ " inserted");
 
 		if(fileReponseObj.getTrailPath() != null)
-			System.out.println("File insert trail path : "+fileReponseObj.getTrailPath());
+			System.out.println("Domain insert trail path : "+fileReponseObj.getTrailPath());
 
-		System.out.println("File insertion result : "+fileReponseObj.getResult());
+		System.out.println("DOmain insertion result : "+fileReponseObj.getResult());
 		System.out.println("---------------------------------");
 	}
 

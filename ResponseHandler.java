@@ -169,9 +169,13 @@ public class ResponseHandler implements Runnable {
 								lines.add(str);
 							}
 
+							String content;
+							content = new Scanner(new File(fileName)).useDelimiter("\\A").next();
+
 							MyFile file = new MyFile();
 							file.setFileName(fileName);
 							file.setLines(lines);
+							file.setContent();
 
 
 							Thread nodeController = new Thread(new NodeController(Input.FILE_FORWARD.toString(),
