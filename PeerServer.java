@@ -219,7 +219,7 @@ public class PeerServer {
 	/*
 	 * Search file 
 	 */
-	private void searchFile(String command, String fileName) {
+	private void searchFile(String command, String fileName)  {
 
 		int fileIdentifier = Utils.getHashCodesForFile(fileName);
 
@@ -230,13 +230,17 @@ public class PeerServer {
 				node.getIdSpaceUpperLimit())) {
 
 			String content;
-			content = new Scanner(new File(fileName)).useDelimiter("\\A").next();
+			
+			try {
+				content = new Scanner(new File(fileName)).useDelimiter("\\A").next();
+				System.out.println("----------SEARCH STATUS----------");
+				System.out.println("Search Trail Path : "+node.getNodeIdentifier());
+				System.out.println("Insert DNS Result : Success");
+				System.out.println("Domain IP: " + content);
+				System.out.println("--------------------------------");
+			} catch (FileNotFoundException e){
 
-			System.out.println("----------SEARCH STATUS----------");
-			System.out.println("Search Trail Path : "+node.getNodeIdentifier());
-			System.out.println("Insert DNS Result : Success");
-			System.out.println("Domain IP: " + content);
-			System.out.println("--------------------------------");
+			}
 		}
 		else {
 
