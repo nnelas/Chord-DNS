@@ -111,7 +111,7 @@ public class PeerServer {
 			break;
 
 		case "join":
-			Random randomGenerator;
+			/*Random randomGenerator;
     		ArrayList<String> catalogue;
 
         	catalogue = new ArrayList<String>();
@@ -124,10 +124,10 @@ public class PeerServer {
         	catalogue.add("ciencias.ulisboa.pt");
     
         	int index = randomGenerator.nextInt(catalogue.size());
-        	fileName = catalogue.get(index);
+        	fileName = catalogue.get(index);*/
         
 			join(cmd);
-			insertFile("insert", fileName);
+			//insertFile("insert", fileName);
 			Utils.nodeActive = true;
 			break;
 
