@@ -434,10 +434,14 @@ public class PeerServer {
 	 */
 	public void printSearchInfo(FileResponseObject fileReponseObj) {
 
+		String content;
+
 		System.out.println("----------SEARCH STATUS----------");
 		
 		if(fileReponseObj.getResult().equalsIgnoreCase("Success")){
 
+			try {
+			content = new Scanner(new File(fileReponseObj.getFile().getFileName())).useDelimiter("\\A").next();
 			System.out.println("Search file : "+fileReponseObj.getFile().getFileName());
 
 			System.out.println("Peer which has the File : "+fileReponseObj.getSourceIPAddress()+ 
@@ -445,9 +449,10 @@ public class PeerServer {
 
 			System.out.println("Trail Path : "+fileReponseObj.getTrailPath());
 
-			System.out.println("DNS Search Result : "+fileReponseObj.getFile().getContent());
+			System.out.println("DNS Search Result : "+content);
 
 			System.out.println("Search Result: "+fileReponseObj.result);
+			} catch (FileNotFoundException e) {}
 		}else{
 			System.out.println("Search DNS : "+fileReponseObj.getFile().getFileName());
 			System.out.println("Reason : No such domain present in the Chord servers " );
