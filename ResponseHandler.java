@@ -10,6 +10,7 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class ResponseHandler implements Runnable {
@@ -175,7 +176,7 @@ public class ResponseHandler implements Runnable {
 							MyFile file = new MyFile();
 							file.setFileName(fileName);
 							file.setLines(lines);
-							file.setContent();
+							file.setContent(content);
 
 
 							Thread nodeController = new Thread(new NodeController(Input.FILE_FORWARD.toString(),
